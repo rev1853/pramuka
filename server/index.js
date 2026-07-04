@@ -14,7 +14,7 @@ import { Events } from '../shared/events.js';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const CLIENT_DIST = join(__dirname, '..', 'client', 'dist');
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 3005;
 
 async function main() {
   await questionBank.load();
@@ -40,7 +40,7 @@ async function main() {
     }
   });
 
-  // Serve built client in production. In dev, Vite serves the client on :5173.
+  // Serve built client in production. In dev, Vite serves the client on :3005.
   if (existsSync(CLIENT_DIST)) {
     app.use(express.static(CLIENT_DIST));
     app.get('*', (_req, res) => res.sendFile(join(CLIENT_DIST, 'index.html')));

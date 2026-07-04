@@ -21,19 +21,19 @@ A real-time multiplayer **Pramuka (Indonesian Scouting)** quiz host. Practice so
 
 ```bash
 npm run install:all   # installs root + server + client deps
-npm run dev           # server on :3000, client on :5173 (proxies /socket.io)
+npm run dev           # server (backend) on :3000, client (Vite) on :3005 (proxies /socket.io)
 ```
 
-Open http://localhost:5173.
+Open http://localhost:3005.
 
 ### Production (single port)
 
 ```bash
 npm run build   # builds client -> client/dist
-npm start       # serves client/dist + Socket.IO on :3000
+npm start       # serves client/dist + Socket.IO on :3005
 ```
 
-Open http://localhost:3000.
+Open http://localhost:3005.
 
 ## Question pool
 

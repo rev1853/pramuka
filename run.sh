@@ -10,7 +10,7 @@
 set -euo pipefail
 
 APP_NAME="pramuka-quiz"
-PORT="${PORT:-3000}"
+PORT="${PORT:-3005}"
 ROOT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
 # Colors (only when attached to a terminal)

@@ -1,11 +1,12 @@
 import { defineConfig } from 'vite';
 
-// In dev, Vite runs on :5173 and proxies Socket.IO + API to the Express
-// server on :3000. In prod, Express serves the built client on one port.
+// In dev, Vite runs on :3005 (the user-facing port) and proxies Socket.IO +
+// API to the Express dev server on :3000. In prod, Express serves the built
+// client on a single port (:3005 by default).
 export default defineConfig({
   server: {
     host: true, // bind 0.0.0.0 so other devices on the LAN can reach the dev server
-    port: 5173,
+    port: 3005,
     proxy: {
       '/socket.io': { target: 'http://localhost:3000', ws: true },
       '/api': 'http://localhost:3000',
