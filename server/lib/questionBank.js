@@ -86,6 +86,16 @@ export class QuestionBank {
   }
 
   /**
+   * Return all questions for a category, in original (file) order, as copies.
+   * No shuffle, no cap — used by the pool/study browser. Unknown categories → [].
+   * @param {string} category
+   * @returns {Question[]}
+   */
+  listByCategory(category) {
+    return (this.byCategory.get(category) || []).map((q) => ({ ...q }));
+  }
+
+  /**
    * Get a randomized subset of questions for a category.
    * Returns copies; originals are untouched.
    * @param {{ category:string, count:number }} opts

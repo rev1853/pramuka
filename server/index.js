@@ -40,6 +40,13 @@ async function main() {
     }
   });
 
+  // Question pool browser: full ordered list for a category (study mode).
+  // Unlike /api/quiz this is not shuffled and not capped — used to browse the bank.
+  app.get('/api/pool', (req, res) => {
+    const category = typeof req.query.category === 'string' ? req.query.category : 'all';
+    res.json({ questions: questionBank.listByCategory(category) });
+  });
+
   // Serve built client in production. In dev, Vite serves the client on :3005.
   if (existsSync(CLIENT_DIST)) {
     app.use(express.static(CLIENT_DIST));

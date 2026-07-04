@@ -23,6 +23,17 @@ export async function fetchQuiz(category, count) {
   return data.questions;
 }
 
+// Question pool browser: full ordered list for a category (study mode).
+export async function fetchPool(category) {
+  const res = await fetch(`/api/pool?category=${encodeURIComponent(category || 'all')}`);
+  if (!res.ok) {
+    const data = await res.json().catch(() => ({}));
+    throw new Error(data.error || 'Gagal memuat bank soal');
+  }
+  const data = await res.json();
+  return data.questions;
+}
+
 // ---- Socket helpers (promise-based ack) ----
 export function createRoom(name) {
   return new Promise((resolve) => {

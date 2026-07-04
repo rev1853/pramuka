@@ -11,6 +11,8 @@ export function renderHome() {
     navigate('/solo');
   });
 
+  const poolBtn = button('Bank Soal', { variant: 'secondary' }, () => navigate('/pool'));
+
   const roomIdInput = input({ placeholder: 'KODE RUANGAN', dataset: { key: 'roomid' } });
 
   const createBtn = button('Create Room', { variant: 'secondary' }, async () => {
@@ -51,6 +53,11 @@ export function renderHome() {
         el('h2', { class: 'font-bold text-lg text-slate-900' }, 'Buat Ruangan'),
         el('p', { class: 'text-slate-500 text-sm mt-1 mb-4' }, 'Buat ruangan, beri kode ke teman, adu cepat.'),
         createBtn
+      ),
+      card(
+        el('h2', { class: 'font-bold text-lg text-slate-900' }, 'Bank Soal'),
+        el('p', { class: 'text-slate-500 text-sm mt-1 mb-4' }, 'Lihat semua soal, jawaban, dan penjelasan per kategori.'),
+        poolBtn
       )
     ),
     card(
