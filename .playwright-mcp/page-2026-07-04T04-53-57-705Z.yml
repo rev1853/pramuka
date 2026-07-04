@@ -1,0 +1,21 @@
+- generic [ref=f6e116]:
+  - generic [ref=f6e117]:
+    - generic [ref=f6e118]: Soal 1 / 3
+    - button "Keluar" [ref=f6e119] [cursor=pointer]
+  - generic [ref=f6e120]:
+    - generic [ref=f6e121]:
+      - generic [ref=f6e122]:
+        - generic [ref=f6e123]:
+          - generic [ref=f6e124]: HostRevan
+          - generic [ref=f6e125]: "10"
+        - generic [ref=f6e126]:
+          - generic [ref=f6e127]: PlayerTwo
+          - generic [ref=f6e128]: "0"
+      - generic [ref=f6e130]: 1s
+    - heading "Pertanyaan contoh untuk kategori Sejarah Pramuka Indonesia — silakan ganti dengan pertanyaan Anda." [level=2] [ref=f6e133]
+    - generic [ref=f6e134]:
+      - button "A.Pilihan A (benar)" [disabled] [ref=f6e135]
+      - button "B.Pilihan B" [disabled] [ref=f6e136]
+      - button "C.Pilihan C" [disabled] [ref=f6e137]
+      - button "D.Pilihan D" [disabled] [ref=f6e138]
+    - paragraph [ref=f6e140]: Benar! +10 poin

@@ -1,0 +1,22 @@
+- generic [ref=e3]:
+  - generic [ref=e4]:
+    - heading "Pramuka Quiz Host" [level=1] [ref=e5]
+    - paragraph [ref=e6]: Uji pengetahuan kepramukaan Anda
+  - generic [ref=e7]:
+    - generic [ref=e8]: Nama
+    - textbox "Nama Anda" [ref=e9]: HostRevan
+  - generic [ref=e10]:
+    - generic [ref=e11]:
+      - heading "Latihan Solo" [level=2] [ref=e12]
+      - paragraph [ref=e13]: Pilih kategori, jawab acak, lihat skor akhir.
+      - 'button "Solo Practice()=>{localStorage.setItem(\"name\",s.value||\"Pemain\"),q(\"/solo\")}" [ref=e14] [cursor=pointer]'
+    - generic [ref=e15]:
+      - heading "Buat Ruangan" [level=2] [ref=e16]
+      - paragraph [ref=e17]: Buat ruangan, beri kode ke teman, adu cepat.
+      - 'button "Create Roomasync()=>{const a=s.value||\"Host\";localStorage.setItem(\"name\",a);const c=await Kt(a);c!=null&&c.ok?q(`/room/${c.roomId}`):S((c==null?void 0:c.error)||\"Gagal membuat ruangan\")}" [active] [ref=e18] [cursor=pointer]'
+  - generic [ref=e19]:
+    - heading "Gabung Ruangan" [level=2] [ref=e20]
+    - paragraph [ref=e21]: Masukkan kode ruangan dari host.
+    - generic [ref=e22]:
+      - textbox "KODE RUANGAN" [ref=e23]
+      - 'button "Join Roomasync()=>{const a=t.value.trim().toUpperCase();if(!a)return S(\"Masukkan kode ruangan\");const c=s.value||\"Player\";localStorage.setItem(\"name\",c);const l=await Wt(a,c);l!=null&&l.ok?q(`/room/${a}`):S((l==null?void 0:l.error)||\"Gagal bergabung\")}" [ref=e24] [cursor=pointer]'

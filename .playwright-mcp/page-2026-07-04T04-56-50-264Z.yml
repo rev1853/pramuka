@@ -1,0 +1,11 @@
+- generic [ref=f2e87]:
+  - generic [ref=f2e88]:
+    - heading "Hasil Latihan" [level=1] [ref=f2e89]
+    - paragraph [ref=f2e90]: SoloPlayer
+  - generic [ref=f2e91]:
+    - generic [ref=f2e92]:
+      - generic [ref=f2e93]: 2/3
+      - generic [ref=f2e94]: 67% benar
+    - generic [ref=f2e95]:
+      - button "Latihan Lagi" [ref=f2e96] [cursor=pointer]
+      - button "Beranda" [ref=f2e97] [cursor=pointer]

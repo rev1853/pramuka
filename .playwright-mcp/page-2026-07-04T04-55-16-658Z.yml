@@ -1,0 +1,15 @@
+- generic [ref=f1e114]:
+  - generic [ref=f1e115]:
+    - generic [ref=f1e116]: Pertanyaan 1 dari 3
+    - generic [ref=f1e117]: "Benar: 0"
+  - heading "Pertanyaan contoh untuk kategori Istilah Umum Pramuka — silakan ganti dengan pertanyaan Anda." [level=2] [ref=f1e118]
+  - generic [ref=f1e119]:
+    - button "A.Pilihan A (benar)" [disabled] [ref=f1e120]
+    - button "B.Pilihan B" [disabled] [ref=f1e121]
+    - button "C.Pilihan C" [disabled] [ref=f1e122]
+    - button "D.Pilihan D" [disabled] [ref=f1e123]
+  - generic [ref=f1e124]:
+    - generic [ref=f1e125]:
+      - paragraph [ref=f1e126]: Benar!
+      - paragraph [ref=f1e127]: Ganti pertanyaan, opsi, dan jawaban ini di server/data/questions.json.
+    - button "Pertanyaan Berikutnya" [ref=f1e129] [cursor=pointer]

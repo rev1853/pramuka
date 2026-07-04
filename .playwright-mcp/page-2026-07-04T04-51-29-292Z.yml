@@ -1,0 +1,47 @@
+- generic [ref=f5e25]:
+  - generic [ref=f5e26]:
+    - heading "Ruangan FH9N" [level=1] [ref=f5e27]
+    - button "Keluar" [ref=f5e28] [cursor=pointer]
+  - generic [ref=f5e29]:
+    - heading "Pemain" [level=2] [ref=f5e30]
+    - list [ref=f5e31]:
+      - listitem [ref=f5e32]:
+        - generic [ref=f5e33]: HostRevanHOST
+        - generic [ref=f5e34]: siap
+      - listitem [ref=f5e35]: Menunggu pemain...
+    - paragraph [ref=f5e36]: Bagikan kode ruangan ke teman untuk mengajak bermain.
+  - generic [ref=f5e37]:
+    - heading "Konfigurasi" [level=2] [ref=f5e38]
+    - paragraph [ref=f5e39]: Atur lalu mulai permainan.
+    - generic [ref=f5e40]: Kategori
+    - combobox [ref=f5e41]:
+      - option "Semua Kategori" [selected]
+      - option "Kepramukaan Internasional"
+      - option "Istilah Umum Pramuka"
+      - option "Upacara & Ritual"
+      - option "Lambang & Atribut Pramuka"
+      - option "Dasa Darma & Tri Satya"
+      - option "Berkemah & Bertahan Hidup"
+      - option "Navigasi & Pemetaan"
+      - option "Pertolongan Pertama"
+      - option "Tali Temali"
+      - option "Sandi-sandi"
+      - option "Struktur Gerakan Pramuka"
+      - option "Sejarah Pramuka Indonesia"
+      - option "Sejarah Kepramukaan Dunia"
+    - generic [ref=f5e42]:
+      - generic [ref=f5e43]:
+        - generic [ref=f5e44]: Jumlah Soal
+        - spinbutton [ref=f5e45]: "10"
+      - generic [ref=f5e46]:
+        - generic [ref=f5e47]: Poin (+)
+        - spinbutton [ref=f5e48]: "10"
+      - generic [ref=f5e49]:
+        - generic [ref=f5e50]: Penalti (−)
+        - spinbutton [ref=f5e51]: "10"
+      - generic [ref=f5e52]:
+        - generic [ref=f5e53]: Detik/Soal
+        - spinbutton [ref=f5e54]: "20"
+    - generic [ref=f5e55]:
+      - button "Simpan Konfigurasi" [ref=f5e56] [cursor=pointer]
+      - button "Mulai Permainan" [disabled] [ref=f5e57]

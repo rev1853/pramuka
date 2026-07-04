@@ -1,0 +1,17 @@
+- generic [ref=f1e25]:
+  - generic [ref=f1e26]:
+    - heading "Ruangan B4P4" [level=1] [ref=f1e27]
+    - button "Keluar" [ref=f1e28] [cursor=pointer]
+  - generic [ref=f1e29]:
+    - heading "Pemain" [level=2] [ref=f1e30]
+    - list [ref=f1e31]:
+      - listitem [ref=f1e32]:
+        - generic [ref=f1e33]: HostRevanHOST
+        - generic [ref=f1e34]: siap
+      - listitem [ref=f1e35]:
+        - generic [ref=f1e36]: PlayerTwo
+        - generic [ref=f1e37]: siap
+    - paragraph [ref=f1e38]: Pemain lengkap. Host bisa memulai.
+  - generic [ref=f1e39]:
+    - heading "Menunggu Host" [level=2] [ref=f1e40]
+    - paragraph [ref=f1e41]: Permainan akan dimulai oleh host sebentar lagi.

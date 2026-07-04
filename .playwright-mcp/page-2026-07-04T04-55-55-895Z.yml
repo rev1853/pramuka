@@ -1,0 +1,26 @@
+- generic [ref=f2e25]:
+  - generic [ref=f2e26]:
+    - heading "Latihan Solo" [level=1] [ref=f2e27]
+    - paragraph [ref=f2e28]: Selamat datang, SoloPlayer
+  - generic [ref=f2e29]:
+    - generic [ref=f2e30]: Kategori
+    - combobox [ref=f2e31]:
+      - option "Semua Kategori" [selected]
+      - option "Kepramukaan Internasional"
+      - option "Istilah Umum Pramuka"
+      - option "Upacara & Ritual"
+      - option "Lambang & Atribut Pramuka"
+      - option "Dasa Darma & Tri Satya"
+      - option "Berkemah & Bertahan Hidup"
+      - option "Navigasi & Pemetaan"
+      - option "Pertolongan Pertama"
+      - option "Tali Temali"
+      - option "Sandi-sandi"
+      - option "Struktur Gerakan Pramuka"
+      - option "Sejarah Pramuka Indonesia"
+      - option "Sejarah Kepramukaan Dunia"
+    - generic [ref=f2e32]: Jumlah Pertanyaan
+    - spinbutton [ref=f2e33]: "10"
+    - generic [ref=f2e34]:
+      - button "Kembali" [ref=f2e35] [cursor=pointer]
+      - button "Mulai" [ref=f2e36] [cursor=pointer]

@@ -1,0 +1,5 @@
+[      18ms] [WARNING] cdn.tailwindcss.com should not be used in production. To use Tailwind CSS in production, install it as a PostCSS plugin or use the Tailwind CLI: https://tailwindcss.com/docs/installation @ https://cdn.tailwindcss.com/:63
+[   56997ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ http://localhost:3000/socket.io/?EIO=4&transport=polling&t=vt1s1nyk:0
+[   58754ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ http://localhost:3000/socket.io/?EIO=4&transport=polling&t=vt34tnc2:0
+[   61546ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ http://localhost:3000/socket.io/?EIO=4&transport=polling&t=vt5aesij:0
+[   66548ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ http://localhost:3000/socket.io/?EIO=4&transport=polling&t=vt95b81d:0

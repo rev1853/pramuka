@@ -1,0 +1,22 @@
+- generic [ref=f1e3]:
+  - generic [ref=f1e4]:
+    - heading "Pramuka Quiz Host" [level=1] [ref=f1e5]
+    - paragraph [ref=f1e6]: Uji pengetahuan kepramukaan Anda
+  - generic [ref=f1e7]:
+    - generic [ref=f1e8]: Nama
+    - textbox "Nama Anda" [ref=f1e9]
+  - generic [ref=f1e10]:
+    - generic [ref=f1e11]:
+      - heading "Latihan Solo" [level=2] [ref=f1e12]
+      - paragraph [ref=f1e13]: Pilih kategori, jawab acak, lihat skor akhir.
+      - button "Solo Practice" [ref=f1e14] [cursor=pointer]
+    - generic [ref=f1e15]:
+      - heading "Buat Ruangan" [level=2] [ref=f1e16]
+      - paragraph [ref=f1e17]: Buat ruangan, beri kode ke teman, adu cepat.
+      - button "Create Room" [ref=f1e18] [cursor=pointer]
+  - generic [ref=f1e19]:
+    - heading "Gabung Ruangan" [level=2] [ref=f1e20]
+    - paragraph [ref=f1e21]: Masukkan kode ruangan dari host.
+    - generic [ref=f1e22]:
+      - textbox "KODE RUANGAN" [ref=f1e23]
+      - button "Join Room" [ref=f1e24] [cursor=pointer]

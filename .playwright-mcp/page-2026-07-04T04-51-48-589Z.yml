@@ -1,0 +1,17 @@
+- generic [ref=e25]:
+  - generic [ref=e26]:
+    - heading "Ruangan FH9N" [level=1] [ref=e27]
+    - button "Keluar" [ref=e28] [cursor=pointer]
+  - generic [ref=e29]:
+    - heading "Pemain" [level=2] [ref=e30]
+    - list [ref=e31]:
+      - listitem [ref=e32]:
+        - generic [ref=e33]: HostRevanHOST
+        - generic [ref=e34]: siap
+      - listitem [ref=e35]:
+        - generic [ref=e36]: PlayerTwo
+        - generic [ref=e37]: siap
+    - paragraph [ref=e38]: Pemain lengkap. Host bisa memulai.
+  - generic [ref=e39]:
+    - heading "Menunggu Host" [level=2] [ref=e40]
+    - paragraph [ref=e41]: Permainan akan dimulai oleh host sebentar lagi.

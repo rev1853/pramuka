@@ -1,0 +1,2 @@
+[      16ms] [WARNING] cdn.tailwindcss.com should not be used in production. To use Tailwind CSS in production, install it as a PostCSS plugin or use the Tailwind CLI: https://tailwindcss.com/docs/installation @ https://cdn.tailwindcss.com/:63
+[      75ms] [LOG] [sock] connect VdsDqsR2bRlZYnLdAAAF connected= true @ http://localhost:3000/assets/index-Bq2M5bRI.js:0

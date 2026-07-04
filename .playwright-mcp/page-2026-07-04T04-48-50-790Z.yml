@@ -1,0 +1,22 @@
+- generic [ref=f2e3]:
+  - generic [ref=f2e4]:
+    - heading "Pramuka Quiz Host" [level=1] [ref=f2e5]
+    - paragraph [ref=f2e6]: Uji pengetahuan kepramukaan Anda
+  - generic [ref=f2e7]:
+    - generic [ref=f2e8]: Nama
+    - textbox "Nama Anda" [ref=f2e9]: HostRevan
+  - generic [ref=f2e10]:
+    - generic [ref=f2e11]:
+      - heading "Latihan Solo" [level=2] [ref=f2e12]
+      - paragraph [ref=f2e13]: Pilih kategori, jawab acak, lihat skor akhir.
+      - 'button "Solo Practice()=>{localStorage.setItem(\"name\",s.value||\"Pemain\"),q(\"/solo\")}" [ref=f2e14] [cursor=pointer]'
+    - generic [ref=f2e15]:
+      - heading "Buat Ruangan" [level=2] [ref=f2e16]
+      - paragraph [ref=f2e17]: Buat ruangan, beri kode ke teman, adu cepat.
+      - 'button "Create Roomasync()=>{const a=s.value||\"Host\";localStorage.setItem(\"name\",a);const c=await Kt(a);c!=null&&c.ok?q(`/room/${c.roomId}`):B((c==null?void 0:c.error)||\"Gagal membuat ruangan\")}" [active] [ref=f2e18] [cursor=pointer]'
+  - generic [ref=f2e19]:
+    - heading "Gabung Ruangan" [level=2] [ref=f2e20]
+    - paragraph [ref=f2e21]: Masukkan kode ruangan dari host.
+    - generic [ref=f2e22]:
+      - textbox "KODE RUANGAN" [ref=f2e23]
+      - 'button "Join Roomasync()=>{const a=t.value.trim().toUpperCase();if(!a)return B(\"Masukkan kode ruangan\");const c=s.value||\"Player\";localStorage.setItem(\"name\",c);const l=await Wt(a,c);l!=null&&l.ok?q(`/room/${a}`):B((l==null?void 0:l.error)||\"Gagal bergabung\")}" [ref=f2e24] [cursor=pointer]'

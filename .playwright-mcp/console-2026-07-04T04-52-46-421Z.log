@@ -1,0 +1,13 @@
+[      16ms] [WARNING] cdn.tailwindcss.com should not be used in production. To use Tailwind CSS in production, install it as a PostCSS plugin or use the Tailwind CLI: https://tailwindcss.com/docs/installation @ https://cdn.tailwindcss.com/:63
+[      72ms] [LOG] [sock] connect FPan_0KU9RW3zEOWAAAJ connected= true @ http://localhost:3000/assets/index-Cwe3ZImn.js:0
+[  254458ms] [LOG] [sock] disconnect transport close @ http://localhost:3000/assets/index-Cwe3ZImn.js:0
+[  255212ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ http://localhost:3000/socket.io/?EIO=4&transport=polling&t=w4hxbywq:0
+[  255213ms] [LOG] [sock] connect_error xhr poll error XMLHttpRequest @ http://localhost:3000/assets/index-Cwe3ZImn.js:0
+[  256809ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ http://localhost:3000/socket.io/?EIO=4&transport=polling&t=w4j5pgzg:0
+[  256809ms] [LOG] [sock] connect_error xhr poll error XMLHttpRequest @ http://localhost:3000/assets/index-Cwe3ZImn.js:0
+[  259862ms] [LOG] [sock] connect axrppk43aeNzJ_W1AAAD connected= true @ http://localhost:3000/assets/index-Cwe3ZImn.js:0
+[  275871ms] [LOG] [sock] disconnect transport close @ http://localhost:3000/assets/index-Cwe3ZImn.js:0
+[  276735ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ http://localhost:3000/socket.io/?EIO=4&transport=polling&t=w4yj6eyq:0
+[  276735ms] [LOG] [sock] connect_error xhr poll error XMLHttpRequest @ http://localhost:3000/assets/index-Cwe3ZImn.js:0
+[  278086ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ http://localhost:3000/socket.io/?EIO=4&transport=polling&t=w4zkpdr0:0
+[  278086ms] [LOG] [sock] connect_error xhr poll error XMLHttpRequest @ http://localhost:3000/assets/index-Cwe3ZImn.js:0

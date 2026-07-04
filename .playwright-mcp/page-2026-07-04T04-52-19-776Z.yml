@@ -1,0 +1,21 @@
+- generic [ref=f5e116]:
+  - generic [ref=f5e117]:
+    - generic [ref=f5e118]: Soal 1 / 3
+    - button "Keluar" [ref=f5e119] [cursor=pointer]
+  - generic [ref=f5e120]:
+    - generic [ref=f5e121]:
+      - generic [ref=f5e122]:
+        - generic [ref=f5e123]:
+          - generic [ref=f5e124]: HostRevan
+          - generic [ref=f5e125]: "0"
+        - generic [ref=f5e126]:
+          - generic [ref=f5e127]: PlayerTwo
+          - generic [ref=f5e128]: "0"
+      - generic [ref=f5e130]: 2s
+    - heading "Pertanyaan contoh untuk kategori Sandi-sandi — silakan ganti dengan pertanyaan Anda." [level=2] [ref=f5e133]
+    - generic [ref=f5e134]:
+      - button "A.Pilihan A (benar)" [disabled] [ref=f5e135]
+      - button "B.Pilihan B" [disabled] [ref=f5e136]
+      - button "C.Pilihan C" [disabled] [ref=f5e137]
+      - button "D.Pilihan D" [disabled] [ref=f5e138]
+    - paragraph [ref=f5e140]: Benar! +10 poin

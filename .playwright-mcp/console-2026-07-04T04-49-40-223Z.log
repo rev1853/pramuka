@@ -1,0 +1,8 @@
+[      15ms] [WARNING] cdn.tailwindcss.com should not be used in production. To use Tailwind CSS in production, install it as a PostCSS plugin or use the Tailwind CLI: https://tailwindcss.com/docs/installation @ https://cdn.tailwindcss.com/:63
+[      69ms] [LOG] [sock] connect jz2S7xjNNbvGdx32AAAF connected= true @ http://localhost:3000/assets/index-DP73IcpF.js:0
+[   40496ms] [LOG] [sock] disconnect transport close @ http://localhost:3000/assets/index-DP73IcpF.js:0
+[   41491ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ http://localhost:3000/socket.io/?EIO=4&transport=polling&t=vvxcgby9:0
+[   41491ms] [LOG] [sock] connect_error xhr poll error XMLHttpRequest @ http://localhost:3000/assets/index-DP73IcpF.js:0
+[   43399ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ http://localhost:3000/socket.io/?EIO=4&transport=polling&t=vvyth3tr:0
+[   43400ms] [LOG] [sock] connect_error xhr poll error XMLHttpRequest @ http://localhost:3000/assets/index-DP73IcpF.js:0
+[   48414ms] [LOG] [sock] connect asKbs6MYgpVXXn0iAAAB connected= true @ http://localhost:3000/assets/index-DP73IcpF.js:0

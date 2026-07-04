@@ -1,0 +1,47 @@
+- generic [ref=f6e25]:
+  - generic [ref=f6e26]:
+    - heading "Ruangan B4P4" [level=1] [ref=f6e27]
+    - button "Keluar" [ref=f6e28] [cursor=pointer]
+  - generic [ref=f6e29]:
+    - heading "Pemain" [level=2] [ref=f6e30]
+    - list [ref=f6e31]:
+      - listitem [ref=f6e32]:
+        - generic [ref=f6e33]: HostRevanHOST
+        - generic [ref=f6e34]: siap
+      - listitem [ref=f6e35]: Menunggu pemain...
+    - paragraph [ref=f6e36]: Bagikan kode ruangan ke teman untuk mengajak bermain.
+  - generic [ref=f6e37]:
+    - heading "Konfigurasi" [level=2] [ref=f6e38]
+    - paragraph [ref=f6e39]: Atur lalu mulai permainan.
+    - generic [ref=f6e40]: Kategori
+    - combobox [ref=f6e41]:
+      - option "Semua Kategori" [selected]
+      - option "Kepramukaan Internasional"
+      - option "Istilah Umum Pramuka"
+      - option "Upacara & Ritual"
+      - option "Lambang & Atribut Pramuka"
+      - option "Dasa Darma & Tri Satya"
+      - option "Berkemah & Bertahan Hidup"
+      - option "Navigasi & Pemetaan"
+      - option "Pertolongan Pertama"
+      - option "Tali Temali"
+      - option "Sandi-sandi"
+      - option "Struktur Gerakan Pramuka"
+      - option "Sejarah Pramuka Indonesia"
+      - option "Sejarah Kepramukaan Dunia"
+    - generic [ref=f6e42]:
+      - generic [ref=f6e43]:
+        - generic [ref=f6e44]: Jumlah Soal
+        - spinbutton [ref=f6e45]: "10"
+      - generic [ref=f6e46]:
+        - generic [ref=f6e47]: Poin (+)
+        - spinbutton [ref=f6e48]: "10"
+      - generic [ref=f6e49]:
+        - generic [ref=f6e50]: Penalti (−)
+        - spinbutton [ref=f6e51]: "10"
+      - generic [ref=f6e52]:
+        - generic [ref=f6e53]: Detik/Soal
+        - spinbutton [ref=f6e54]: "20"
+    - generic [ref=f6e55]:
+      - button "Simpan Konfigurasi" [ref=f6e56] [cursor=pointer]
+      - button "Mulai Permainan" [disabled] [ref=f6e57]

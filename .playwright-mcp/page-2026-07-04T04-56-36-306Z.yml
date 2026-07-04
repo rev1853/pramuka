@@ -1,0 +1,10 @@
+- generic [ref=f2e71]:
+  - generic [ref=f2e72]:
+    - generic [ref=f2e73]: Pertanyaan 3 dari 3
+    - generic [ref=f2e74]: "Benar: 2"
+  - heading "Siapakah pendiri gerakan kepramukaan sedunia?" [level=2] [ref=f2e75]
+  - generic [ref=f2e76]:
+    - button "A.Robert Baden-Powell" [ref=f2e77] [cursor=pointer]
+    - button "B.William Boyce" [ref=f2e78] [cursor=pointer]
+    - button "C.Ernest Thompson Seton" [ref=f2e79] [cursor=pointer]
+    - button "D.Daniel Carter Beard" [ref=f2e80] [cursor=pointer]

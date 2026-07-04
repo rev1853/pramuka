@@ -1,0 +1,13 @@
+- generic [ref=f2e38]:
+  - generic [ref=f2e39]:
+    - generic [ref=f2e40]: Pertanyaan 1 dari 3
+    - generic [ref=f2e41]: "Benar: 1"
+  - heading "Pertanyaan contoh untuk kategori Navigasi & Pemetaan — silakan ganti dengan pertanyaan Anda." [level=2] [ref=f2e42]
+  - generic [ref=f2e43]:
+    - button "A.Pilihan A (benar)" [disabled] [ref=f2e44]
+    - button "B.Pilihan B" [disabled] [ref=f2e45]
+    - button "C.Pilihan C" [disabled] [ref=f2e46]
+    - button "D.Pilihan D" [disabled] [ref=f2e47]
+  - generic [ref=f2e48]:
+    - paragraph [ref=f2e50]: Benar!
+    - button "Pertanyaan Berikutnya" [ref=f2e52] [cursor=pointer]

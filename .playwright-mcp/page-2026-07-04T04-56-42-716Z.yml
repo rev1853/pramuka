@@ -1,0 +1,15 @@
+- generic [ref=f2e71]:
+  - generic [ref=f2e72]:
+    - generic [ref=f2e73]: Pertanyaan 3 dari 3
+    - generic [ref=f2e74]: "Benar: 2"
+  - heading "Siapakah pendiri gerakan kepramukaan sedunia?" [level=2] [ref=f2e75]
+  - generic [ref=f2e76]:
+    - button "A.Robert Baden-Powell" [disabled] [ref=f2e77]
+    - button "B.William Boyce" [disabled] [ref=f2e78]
+    - button "C.Ernest Thompson Seton" [disabled] [ref=f2e79]
+    - button "D.Daniel Carter Beard" [disabled] [ref=f2e80]
+  - generic [ref=f2e81]:
+    - generic [ref=f2e82]:
+      - paragraph [ref=f2e83]: Belum tepat.
+      - paragraph [ref=f2e84]: Robert Baden-Powell mendirikan gerakan kepanduan pada 1907 di Pulau Brownsea, Inggris.
+    - button "Lihat Hasil" [ref=f2e86] [cursor=pointer]

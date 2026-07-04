@@ -1,0 +1,13 @@
+[      16ms] [WARNING] cdn.tailwindcss.com should not be used in production. To use Tailwind CSS in production, install it as a PostCSS plugin or use the Tailwind CLI: https://tailwindcss.com/docs/installation @ https://cdn.tailwindcss.com/:63
+[      74ms] [LOG] [sock] connect Ec2rUj0jmdYhCBWXAAAD connected= true @ http://localhost:3000/assets/index-DUldrjBU.js:0
+[    9386ms] TypeError: Cannot convert undefined or null to object
+    at Object.entries (<anonymous>)
+    at o (http://localhost:3000/assets/index-DUldrjBU.js:1:793)
+    at J (http://localhost:3000/assets/index-DUldrjBU.js:1:54067)
+    at ts (http://localhost:3000/assets/index-DUldrjBU.js:1:53604)
+    at H (http://localhost:3000/assets/index-DUldrjBU.js:1:51103)
+    at We.<anonymous> (http://localhost:3000/assets/index-DUldrjBU.js:1:50740)
+    at m.emit (http://localhost:3000/assets/index-DUldrjBU.js:1:7308)
+    at We.emitEvent (http://localhost:3000/assets/index-DUldrjBU.js:1:36780)
+    at We.onevent (http://localhost:3000/assets/index-DUldrjBU.js:1:36583)
+    at We.onpacket (http://localhost:3000/assets/index-DUldrjBU.js:1:36255)
