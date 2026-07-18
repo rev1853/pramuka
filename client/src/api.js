@@ -34,6 +34,28 @@ export async function fetchPool(category) {
   return data.questions;
 }
 
+// Sandi code practice: list available codes for the picker.
+export async function fetchCodes() {
+  const res = await fetch('/api/codes');
+  if (!res.ok) throw new Error('Gagal memuat daftar sandi');
+  const data = await res.json();
+  return data.codes;
+}
+
+// Sandi code practice: generate drill questions (choice/encode/decode).
+// Returns full data incl. expected/answer for solo self-check.
+export async function fetchCodeDrill(code, mode, count) {
+  const res = await fetch(
+    `/api/codes/drill?code=${encodeURIComponent(code)}&mode=${encodeURIComponent(mode)}&count=${count}`
+  );
+  if (!res.ok) {
+    const data = await res.json().catch(() => ({}));
+    throw new Error(data.error || 'Gagal memuat latihan sandi');
+  }
+  const data = await res.json();
+  return data.questions;
+}
+
 // ---- Socket helpers (promise-based ack) ----
 export function createRoom(name) {
   return new Promise((resolve) => {
@@ -65,6 +87,10 @@ export function startGame() {
 
 export function submitAnswer(roundId, optionIndex) {
   socket.emit(Events.ANSWER_SUBMIT, { roundId, optionIndex });
+}
+
+export function submitCode(roundId, submission) {
+  socket.emit(Events.CODE_SUBMIT, { roundId, submission });
 }
 
 // Generic event subscription. Returns an unsubscribe function.

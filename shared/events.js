@@ -16,10 +16,18 @@ export const Events = {
   GAME_END: 'game:end', // server->room: { scores: [{name, score}], winner }
 
   // Question round
-  QUESTION_SHOW: 'question:show', // server->room: { roundId, index, total, question, options, seconds }
+  // MCQ payload: { kind:'mcq', roundId, index, total, question, options, seconds }
+  // Code payload:  { kind:'code', roundId, index, total, codeType, mode, prompt, seconds }
+  QUESTION_SHOW: 'question:show',
   ANSWER_SUBMIT: 'answer:submit', // client->server { roundId, optionIndex }
-  ANSWER_RESULT: 'answer:result', // server->room: { roundId, winnerId, winnerName, correct, chosenIndex, correctIndex, scores }
-  QUESTION_TIMEOUT: 'question:timeout', // server->room: { roundId, correctIndex, scores }
+  // For code fill-in rounds (encode/decode). submission = array of symbols/letters.
+  CODE_SUBMIT: 'code:submit', // client->server { roundId, submission }
+  // MCQ result: { ..., correctIndex }
+  // Code result: { ..., correct }
+  ANSWER_RESULT: 'answer:result',
+  // MCQ timeout: { correctIndex }
+  // Code timeout: { correctSequence }
+  QUESTION_TIMEOUT: 'question:timeout',
   QUESTION_NEXT: 'question:next', // server->room: { index } (advance signal)
 
   // Errors
@@ -28,11 +36,15 @@ export const Events = {
 
 // Default room config. Host can override via game:config.
 export const DEFAULT_CONFIG = {
+  mode: 'mcq', // 'mcq' or 'code'
   category: 'all', // 'all' or a category id
   questionCount: 10,
   points: 10, // awarded for correct (first buzz)
   penalty: 10, // subtracted for wrong (first buzz)
   secondsPerQuestion: 20, // server-side timer; 0 buzz in time => both 0
+  // code-mode defaults
+  code: 'morse',
+  drillMode: 'choice',
 };
 
 export const MAX_PLAYERS = 2;

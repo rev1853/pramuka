@@ -8,6 +8,7 @@ import { existsSync } from 'node:fs';
 import { networkInterfaces } from 'node:os';
 
 import { questionBank } from './lib/questionBank.js';
+import { codeBank } from './lib/codeBank.js';
 import { registerRoomHandlers, handleDeparture } from './sockets/rooms.js';
 import { registerGameHandlers } from './sockets/game.js';
 import { Events } from '../shared/events.js';
@@ -45,6 +46,26 @@ async function main() {
   app.get('/api/pool', (req, res) => {
     const category = typeof req.query.category === 'string' ? req.query.category : 'all';
     res.json({ questions: questionBank.listByCategory(category) });
+  });
+
+  // Sandi code practice: list available codes for the picker.
+  app.get('/api/codes', (_req, res) => {
+    res.json({ codes: codeBank.listCodes() });
+  });
+
+  // Sandi code practice: generate drill questions for a code + mode.
+  // Returns full data (incl. expected/answer) for solo self-check, mirroring
+  // /api/quiz which returns `answer`. Multiplayer strips these server-side.
+  app.get('/api/codes/drill', (req, res) => {
+    const code = typeof req.query.code === 'string' ? req.query.code : 'morse';
+    const mode = typeof req.query.mode === 'string' ? req.query.mode : 'choice';
+    const count = Math.max(1, Math.min(50, parseInt(req.query.count, 10) || 10));
+    try {
+      const questions = codeBank.generate({ code, mode, count });
+      res.json({ questions });
+    } catch (e) {
+      res.status(400).json({ error: e.message });
+    }
   });
 
   // Serve built client in production. In dev, Vite serves the client on :3005.

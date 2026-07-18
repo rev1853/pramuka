@@ -3,6 +3,7 @@
 import { renderHome } from './screens/home.js';
 import { renderSolo } from './screens/solo.js';
 import { renderPool } from './screens/pool.js';
+import { renderCode } from './screens/code.js';
 import { renderRoom, cleanupRoom } from './screens/room.js';
 import { leaveRoom } from './api.js';
 
@@ -36,6 +37,9 @@ function handleRoute() {
   } else if (parts[0] === 'pool') {
     currentRoute = 'pool';
     renderPool();
+  } else if (parts[0] === 'sandi') {
+    currentRoute = 'sandi';
+    renderCode();
   } else if (parts[0] === 'room' && parts[1]) {
     currentRoute = 'room';
     renderRoom(parts[1]);

@@ -2,6 +2,7 @@
 // the server validates, mutates state, and broadcasts filtered snapshots.
 import { roomStore } from '../lib/roomStore.js';
 import { questionBank } from '../lib/questionBank.js';
+import { codeBank } from '../lib/codeBank.js';
 import { Events, DEFAULT_CONFIG } from '../../shared/events.js';
 
 const REVEAL_DELAY_MS = 3500; // how long to show the answer before advancing
@@ -23,11 +24,15 @@ export function registerGameHandlers(io, socket) {
     if (room.status !== 'lobby') return ack?.({ ok: false, error: 'Permainan sudah berjalan.' });
 
     const config = {
+      mode: cfg.mode === 'code' ? 'code' : 'mcq',
       category: typeof cfg.category === 'string' ? cfg.category : DEFAULT_CONFIG.category,
       questionCount: clamp(cfg.questionCount ?? DEFAULT_CONFIG.questionCount, CONFIG_LIMITS.questionCount),
       points: clamp(cfg.points ?? DEFAULT_CONFIG.points, CONFIG_LIMITS.points),
       penalty: clamp(cfg.penalty ?? DEFAULT_CONFIG.penalty, CONFIG_LIMITS.penalty),
       secondsPerQuestion: clamp(cfg.secondsPerQuestion ?? DEFAULT_CONFIG.secondsPerQuestion, CONFIG_LIMITS.secondsPerQuestion),
+      // code-specific fields
+      code: typeof cfg.code === 'string' ? cfg.code : (DEFAULT_CONFIG.code || 'morse'),
+      drillMode: ['choice', 'encode', 'decode'].includes(cfg.drillMode) ? cfg.drillMode : (DEFAULT_CONFIG.drillMode || 'choice'),
     };
     room.config = config;
     roomStore.touch(roomId);
@@ -46,7 +51,11 @@ export function registerGameHandlers(io, socket) {
 
     const cfg = room.config || DEFAULT_CONFIG;
     try {
-      room.questions = questionBank.getQuestions({ category: cfg.category, count: cfg.questionCount });
+      if (cfg.mode === 'code') {
+        room.questions = codeBank.generate({ code: cfg.code, mode: cfg.drillMode, count: cfg.questionCount });
+      } else {
+        room.questions = questionBank.getQuestions({ category: cfg.category, count: cfg.questionCount });
+      }
     } catch (e) {
       return ack?.({ ok: false, error: e.message });
     }
@@ -110,6 +119,54 @@ export function registerGameHandlers(io, socket) {
 
     scheduleAdvance(io, room);
   });
+
+  // A player submits a completed code fill-in sequence (encode/decode).
+  socket.on(Events.CODE_SUBMIT, ({ roundId, submission } = {}) => {
+    const roomId = socket.data.roomId;
+    const room = roomStore.get(roomId);
+    if (!room || room.status !== 'playing') return;
+
+    // Stale round (lagged/duplicate) — ignore silently.
+    if (roundId !== room.roundId) return;
+    if (!Array.isArray(submission) || submission.length === 0) return;
+    if (room.buzzerSocketId) {
+      socket.emit(Events.ANSWER_RESULT, { roundId, tooLate: true });
+      return;
+    }
+
+    const player = roomStore.findPlayer(roomId, socket.id);
+    if (!player) return;
+
+    const question = room.questions[room.questionIndex];
+    if (!question || question.kind !== 'code' || question.mode === 'choice') return;
+
+    room.buzzerSocketId = socket.id;
+    if (room.timer) {
+      clearTimeout(room.timer);
+      room.timer = null;
+    }
+
+    const correct = codeBank.validate(question, submission);
+    if (correct) {
+      player.score += room.config.points;
+    } else {
+      player.score -= room.config.penalty;
+    }
+    roomStore.touch(roomId);
+
+    io.to(roomId).emit(Events.ANSWER_RESULT, {
+      roundId,
+      winnerId: socket.id,
+      winnerName: player.name,
+      correct,
+      chosenSequence: submission,
+      correctSequence: question.expected,
+      explanation: question.explanation ?? null,
+      scores: scoreboard(room),
+    });
+
+    scheduleAdvance(io, room);
+  });
 }
 
 // Send the current question to the room (never includes the answer).
@@ -120,14 +177,32 @@ function sendQuestion(io, room) {
   if (room.timer) clearTimeout(room.timer);
 
   const question = room.questions[room.questionIndex];
-  io.to(room.roomId).emit(Events.QUESTION_SHOW, {
-    roundId: room.roundId,
-    index: room.questionIndex,
-    total: room.questions.length,
-    question: question.question,
-    options: question.options,
-    seconds: room.config.secondsPerQuestion,
-  });
+  const isCode = question.kind === 'code';
+
+  if (isCode) {
+    io.to(room.roomId).emit(Events.QUESTION_SHOW, {
+      roundId: room.roundId,
+      index: room.questionIndex,
+      total: room.questions.length,
+      kind: 'code',
+      codeType: question.codeType,
+      mode: question.mode,
+      prompt: question.prompt,
+      // For choice mode, clients still need the 4 symbol options.
+      options: question.mode === 'choice' ? question.options : undefined,
+      seconds: room.config.secondsPerQuestion,
+    });
+  } else {
+    io.to(room.roomId).emit(Events.QUESTION_SHOW, {
+      roundId: room.roundId,
+      index: room.questionIndex,
+      total: room.questions.length,
+      kind: 'mcq',
+      question: question.question,
+      options: question.options,
+      seconds: room.config.secondsPerQuestion,
+    });
+  }
 
   // Server-owned timeout: no buzz in time => both 0, advance.
   room.timer = setTimeout(() => {
@@ -135,12 +210,17 @@ function sendQuestion(io, room) {
     if (!r || r.status !== 'playing' || r.roundId !== room.roundId) return;
     r.timer = null;
     const q = r.questions[r.questionIndex];
-    io.to(r.roomId).emit(Events.QUESTION_TIMEOUT, {
+    const payload = {
       roundId: r.roundId,
-      correctIndex: q.answer,
       explanation: q.explanation ?? null,
       scores: scoreboard(r),
-    });
+    };
+    if (q.kind === 'code' && q.mode !== 'choice') {
+      payload.correctSequence = q.expected;
+    } else {
+      payload.correctIndex = q.answer;
+    }
+    io.to(r.roomId).emit(Events.QUESTION_TIMEOUT, payload);
     scheduleAdvance(io, r);
   }, room.config.secondsPerQuestion * 1000);
 }
