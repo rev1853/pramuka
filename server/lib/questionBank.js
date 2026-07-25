@@ -96,19 +96,52 @@ export class QuestionBank {
   }
 
   /**
-   * Get a randomized subset of questions for a category.
+   * Get a randomized subset of questions for one or more categories.
+   * `category` may be a single id, an 'all' sentinel, or a comma-separated
+   * list of ids (e.g. 'upacara,lambang'). Alternatively pass `categories`
+   * as an array of ids. The selected categories' pools are merged, shuffled,
+   * and sliced to `count`. An empty list, 'all', or any unknown id falls
+   * back to the full pool so a bad/empty selection never throws.
    * Returns copies; originals are untouched.
-   * @param {{ category:string, count:number }} opts
+   * @param {{ category?:string, categories?:string[], count:number }} opts
    * @returns {Question[]}
    */
-  getQuestions({ category, count }) {
-    const pool = this.byCategory.get(category) || [];
+  getQuestions({ category, categories, count } = {}) {
+    const ids = this._resolveCategoryIds(category, categories);
+    let pool;
+    if (ids === null) {
+      // 'all' / empty / unknown → full pool
+      pool = this.byCategory.get('all') || [];
+    } else {
+      pool = ids.flatMap((id) => this.byCategory.get(id) || []);
+      if (pool.length === 0) {
+        throw new Error(`No questions available for category "${category ?? ''}"`);
+      }
+    }
     if (pool.length === 0) {
-      throw new Error(`No questions available for category "${category}"`);
+      throw new Error(`No questions available for category "${category ?? ''}"`);
     }
     const shuffled = this._shuffle(pool).map((q) => ({ ...q }));
     const n = Math.min(count, shuffled.length);
     return shuffled.slice(0, n);
+  }
+
+  /**
+   * Normalize the category input into a list of known ids.
+   * Returns null when the selection means "all" (empty, 'all', or no known ids).
+   * @param {string|undefined} category
+   * @param {string[]|undefined} categories
+   * @returns {string[]|null}
+   */
+  _resolveCategoryIds(category, categories) {
+    let raw = Array.isArray(categories) ? categories : [];
+    if (!raw.length && typeof category === 'string' && category.length) {
+      raw = category.split(',').map((s) => s.trim()).filter(Boolean);
+    }
+    if (!raw.length || raw.includes('all')) return null;
+    const known = raw.filter((id) => this.byCategory.has(id) && id !== 'all');
+    // If nothing the caller asked for is known, fall back to all.
+    return known.length ? known : null;
   }
 
   /** Fisher–Yates shuffle (returns a new array). */

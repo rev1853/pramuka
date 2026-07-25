@@ -5,6 +5,7 @@ import { socket, Events, setGameConfig, startGame, submitAnswer, submitCode, lea
 import { navigate } from '../main.js';
 import { CODES } from '../../../shared/codes.js';
 import { renderSymbol, renderPalette as renderCodePalette } from '../codes/glyphs.js';
+import { renderCategoryPicker, categoriesToParam, paramToCategories } from '../components/categoryPicker.js';
 
 let roomId = null;
 let myName = '';
@@ -111,16 +112,12 @@ function renderLobby() {
   );
   modeSelect.addEventListener('change', () => { lobbyForm.mode = modeSelect.value; render(); });
 
-  const categorySelect = el(
-    'select',
-    {
-      class: 'w-full px-4 py-2.5 rounded-xl border border-slate-200 bg-white focus:outline-none focus:ring-2 focus:ring-brand-500',
-      disabled: !host,
-    },
-    el('option', { value: 'all' }, 'Semua Kategori'),
-    ...categories.map((c) => el('option', { value: c.id, selected: c.id === lobbyForm.category }, c.name))
-  );
-  categorySelect.addEventListener('change', () => { lobbyForm.category = categorySelect.value; });
+  const categoryPicker = renderCategoryPicker({
+    categories,
+    selected: paramToCategories(lobbyForm.category, categories),
+    onChange: (set) => { lobbyForm.category = categoriesToParam(set, categories); },
+    disabled: !host,
+  });
 
   const codeSelect = el(
     'select',
@@ -195,7 +192,7 @@ function renderLobby() {
           el('h2', { class: 'font-bold text-lg text-slate-900 mb-1' }, 'Konfigurasi'),
           el('p', { class: 'text-slate-500 text-sm mb-4' }, 'Atur lalu mulai permainan.'),
           field('Mode Permainan', modeSelect),
-          lobbyForm.mode === 'mcq' ? field('Kategori', categorySelect) : null,
+          lobbyForm.mode === 'mcq' ? field('Kategori', categoryPicker) : null,
           lobbyForm.mode === 'code' ? field('Jenis Sandi', codeSelect) : null,
           lobbyForm.mode === 'code' ? field('Mode Latihan', drillModeSelect) : null,
           grid(

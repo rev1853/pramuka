@@ -3,6 +3,7 @@
 import { el, button, input, card, heading, mount, toast } from '../ui.js';
 import { fetchCategories, fetchQuiz } from '../api.js';
 import { navigate } from '../main.js';
+import { renderCategoryPicker, categoriesToParam, paramToCategories } from '../components/categoryPicker.js';
 
 export async function renderSolo() {
   const name = localStorage.getItem('name') || 'Pemain';
@@ -17,19 +18,16 @@ export async function renderSolo() {
 
 function renderPicker(categories, name) {
   const countInput = input({ type: 'number', value: '10', dataset: { key: 'count' } });
+  let selected = paramToCategories('all', categories);
 
-  const categorySelect = el(
-    'select',
-    {
-      class:
-        'w-full px-4 py-2.5 rounded-xl border border-slate-200 bg-white focus:outline-none focus:ring-2 focus:ring-brand-500',
-    },
-    el('option', { value: 'all' }, 'Semua Kategori'),
-    ...categories.map((c) => el('option', { value: c.id }, c.name))
-  );
+  const categoryPicker = renderCategoryPicker({
+    categories,
+    selected,
+    onChange: (set) => { selected = set; },
+  });
 
   const startBtn = button('Mulai', {}, async () => {
-    const category = categorySelect.value;
+    const category = categoriesToParam(selected, categories);
     const count = Math.max(1, Math.min(50, parseInt(countInput.value, 10) || 10));
     startBtn.disabled = true;
     startBtn.textContent = 'Memuat...';
@@ -55,7 +53,7 @@ function renderPicker(categories, name) {
     heading('Latihan Solo', `Selamat datang, ${name}`),
     card(
       el('label', { class: 'block text-sm font-medium text-slate-600 mb-1.5' }, 'Kategori'),
-      categorySelect,
+      categoryPicker,
       el('label', { class: 'block text-sm font-medium text-slate-600 mt-4 mb-1.5' }, 'Jumlah Pertanyaan'),
       countInput,
       el('div', { class: 'flex gap-3 mt-6' }, button('Kembali', { variant: 'ghost' }, () => navigate('/')), startBtn)
